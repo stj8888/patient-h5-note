@@ -917,7 +917,9 @@ const getConsultFlagText = (flag: 0 | 1) =>
 ```
 
 ```html
-  <template v-for="{ msgType, msg, createTime, from } in list" :key="msg.id">
+  <template >
+    //在template模板不能用v-for遍历，否则多个模板vue3会报错
+    <div v-for="{ msgType, msg, createTime, from } in list" :key="msg.id">
     <!-- 病情描述 -->
     <div class="msg msg-illness" v-if="msgType === MsgType.CardPat">
       <div class="patient van-hairline--bottom" v-if="msg.consultRecord">
@@ -950,6 +952,7 @@ const getConsultFlagText = (flag: 0 | 1) =>
       <div class="content">
         <span>{{ msg.content }}</span>
       </div>
+    </div>
     </div>
   </template>    
 ```
